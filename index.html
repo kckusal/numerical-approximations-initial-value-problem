@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Solved Initial Value Problem using Euler's, Improved Euler's, and Runge-Kutta's methods | Kusal KC's Differential Equation
+		Programming Assignment, Fall 2018, Innopolis UniversitY</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://kckusal.github.io/w3.css-customized/style.css" />
+
+	<!-- Plotly.js -->
+	<script defer src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+	<!-- Mathjax.js -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML'></script>
+
+	<script defer src="script.js"></script>
+
+</head>
+
+<body onload="performComputations()" class="padding-large">
+
+	<div id="problem-info">
+		<div id="problem-title" class="xlarge bold border-bottom" style="font-family: sans-serif;">
+			Solving an Initial Value Problem using Numerical Approximation Methods
+      <span class="small right padding-small border hoverable hover-black" onclick="document.getElementById('problem-description').classList.toggle('hide');">Click to see/hide details</span>
+		</div>
+    <div id="problem-description" class="hide" onclick="this.classList.toggle('hide');">
+      <div class="margin-top margin-bottom">This page solves the following Initial Value Problem (IVP) and plots the corresponding solutions found using numerical
+        methods of approximation at different values of x in a given interval :</div>
+
+      <div class="padding-large margin-left">
+        \({dy \over dx} = xy^2 + 3xy\), <br/> \({y(x_0)} = y_0 \) with \((x_0, y_0)= (0, 3)\), and \(x \in [x_0; X]\) with \(X=5.5\)
+      </div>
+
+      <div class="margin-top margin-bottom">The following graph shows the convergence of the solutions in the above interval found using different numerical methods
+        of approximation (Euler's, Improved Euler's, and Runge-Kutta's) with the possibility to change initial conditions, the
+        <strong>number of grid steps used</strong> (N) as well as the <strong>height/size/range of each grid step</strong>(H).</div>
+      </div>
+	  </div>
+
+	<div class="cell-row border-bottom">
+		<div id="solutions_graph" class="cell light-grey"></div>
+
+		<div class="cell cell-top padding-small border-left" style="min-width: 200px;">
+			<h4 class="">Set Initial Conditions</h4>
+
+			<p>Initial value of \(x, x_0 = \)</p>
+			<input type="number" class="input padding-small" name="initial_x" id="initial_x" value="0" />
+			<p>Initial value of \(y, y_0 = \)</p>
+			<input type="number" class="input padding-small" name="initial_y" id="initial_y" value="3" />
+
+			<p>Set X in \(x \in [x_0, X]\) :</p>
+			<input type="number" class="input padding-small" name="end_x" id="end_x" value="5.5" step="0.1" />
+
+			<br>
+
+			<p>Set <strong>either</strong> <span title="Number of step grids." class="underline">N</span> <strong>or</strong> <span title="Height of each step grid."
+				 class="underline">H</span>:</p>
+
+			<form class="padding" style="min-width: 200px;">
+				<input type="radio" name="grids_check" value="N" />
+				<label for="num_grids_slider">
+          <strong>N</strong>
+        </label>&nbsp;&nbsp;
+				<input class="border padding-small" style="max-width:100px; max-height: 35px; margin-bottom: 6px;" type="number" id="grid_count" name="num_grids" min="1" value="0" step="1" disabled />
+				<br>
+
+				<input type="radio" name="grids_check" value="H" checked />
+				<label>
+          <strong>H</strong>
+        </label>&nbsp;&nbsp;
+				<input type="number" class="border padding-small" style="max-width:100px; max-height: 35px; margin-bottom: 8px;" id="grid_height" name="height_grids" min="0.000" max="5" value="0.05" step="0.05" />
+			</form>
+
+			<span class="cell-row button padding-large border green" style="margin-left: 7px;" id="btn-generate-graph">Generate Graph</span>
+		</div>
+	</div>
+
+	<h4 class="bold">Resultant Graphs:</h4>
+	<p>
+		The above graph shows the convergence of the numerical methods of approximation. Try changing the number of grid steps
+		(N) or the height of each grid step (H) above and see how the results vary.
+	</p>
+
+	<p>
+		The following graph gives a comparative view of the corresponding approximation errors using the aforementioned three numerical
+		methods with the aforementioned initial conditions.
+	</p>
+
+	<div id="errors_graph"></div>
+
+</body>
+
+</html>

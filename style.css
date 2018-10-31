@@ -1,0 +1,30 @@
+/* Fonts from Google Fonts - more at https://fonts.google.com */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+html { font-size: 18px; }
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.1rem!important;
+  color: #444;
+}
+
+#problem-info {
+  position: relative;
+}
+
+#problem-description {
+  position: absolute;
+  top: 100%;
+}
+
+#problem-description {
+  display: block;
+  background: white;
+  z-index: 999;
+  min-height: 100vh;
+}
+
+#solutions_graph {
+  width: 100%;
+  padding: 8px 10px;
+}
